@@ -1,5 +1,5 @@
 {
-  "name": "eszsw-signup-app",
+  "name": "login-get-create-pet-app",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -11,7 +11,7 @@
     "mock:server": "json-server --watch server-mocks/auth-forms-mock.json",
     "format:test": "prettier \"projetcs/**/*.{ts,html,md,scss,json}\" --list-different",
     "format:write": "prettier \"projetcs/**/*.{ts,html,md,scss,json}\" --write",
-    "analyze": "ng build --prod --stats-json && webpack-bundle-analyzer ./dist/eszsw-signup-app/stats-es2015.json"
+    "analyze": "ng build --prod --stats-json && webpack-bundle-analyzer ./dist/login-get-create-pet-app/stats-es2015.json"
   },
   "private": true,
   "dependencies": {

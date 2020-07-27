@@ -3,36 +3,36 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "eszsw-signup-app": {
+    "login-get-create-pet-app": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss"
         }
       },
-      "root": "projects/eszsw-signup-app",
-      "sourceRoot": "projects/eszsw-signup-app/src",
+      "root": "projects/login-get-create-pet-app",
+      "sourceRoot": "projects/login-get-create-pet-app/src",
       "prefix": "eszsw",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/eszsw-signup-app",
-            "index": "projects/eszsw-signup-app/src/index.html",
-            "main": "projects/eszsw-signup-app/src/main.ts",
-            "polyfills": "projects/eszsw-signup-app/src/polyfills.ts",
-            "tsConfig": "projects/eszsw-signup-app/tsconfig.app.json",
+            "outputPath": "dist/login-get-create-pet-app",
+            "index": "projects/login-get-create-pet-app/src/index.html",
+            "main": "projects/login-get-create-pet-app/src/main.ts",
+            "polyfills": "projects/login-get-create-pet-app/src/polyfills.ts",
+            "tsConfig": "projects/login-get-create-pet-app/tsconfig.app.json",
             "aot": true,
             "assets": [
-              "projects/eszsw-signup-app/src/favicon.ico",
-              "projects/eszsw-signup-app/src/assets"
+              "projects/login-get-create-pet-app/src/favicon.ico",
+              "projects/login-get-create-pet-app/src/assets"
             ],
             "styles": [
-              "projects/eszsw-signup-app/src/assets/styles.scss"
+              "projects/login-get-create-pet-app/src/assets/styles.scss"
             ],
             "stylePreprocessorOptions": {
               "includePaths": [
-                "projects/eszsw-signup-app/src/assets/styles"
+                "projects/login-get-create-pet-app/src/assets/styles"
               ]
             },
             "scripts": []
@@ -41,8 +41,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "projects/eszsw-signup-app/src/environments/environment.ts",
-                  "with": "projects/eszsw-signup-app/src/environments/environment.prod.ts"
+                  "replace": "projects/login-get-create-pet-app/src/environments/environment.ts",
+                  "with": "projects/login-get-create-pet-app/src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -71,40 +71,40 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "eszsw-signup-app:build"
+            "browserTarget": "login-get-create-pet-app:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "eszsw-signup-app:build:production"
+              "browserTarget": "login-get-create-pet-app:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "eszsw-signup-app:build"
+            "browserTarget": "login-get-create-pet-app:build"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/eszsw-signup-app/src/test.ts",
-            "polyfills": "projects/eszsw-signup-app/src/polyfills.ts",
-            "tsConfig": "projects/eszsw-signup-app/tsconfig.spec.json",
-            "karmaConfig": "projects/eszsw-signup-app/karma.conf.js",
+            "main": "projects/login-get-create-pet-app/src/test.ts",
+            "polyfills": "projects/login-get-create-pet-app/src/polyfills.ts",
+            "tsConfig": "projects/login-get-create-pet-app/tsconfig.spec.json",
+            "karmaConfig": "projects/login-get-create-pet-app/karma.conf.js",
             "assets": [
-              "projects/eszsw-signup-app/src/favicon.ico",
-              "projects/eszsw-signup-app/src/assets"
+              "projects/login-get-create-pet-app/src/favicon.ico",
+              "projects/login-get-create-pet-app/src/assets"
             ],
             "styles": [
-              "projects/eszsw-signup-app/src/assets/styles.scss"
+              "projects/login-get-create-pet-app/src/assets/styles.scss"
             ],
             "scripts": [],
             "stylePreprocessorOptions": {
               "includePaths": [
                 "node_modules/",
-                "projects/eszsw-signup-app/src/assets/styles.scss",
-                "projects/eszsw-signup-app/src/assets/styles"
+                "projects/login-get-create-pet-app/src/assets/styles.scss",
+                "projects/login-get-create-pet-app/src/assets/styles"
               ]
             }
           }
@@ -113,9 +113,9 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/eszsw-signup-app/tsconfig.app.json",
-              "projects/eszsw-signup-app/tsconfig.spec.json",
-              "projects/eszsw-signup-app/e2e/tsconfig.json"
+              "projects/login-get-create-pet-app/tsconfig.app.json",
+              "projects/login-get-create-pet-app/tsconfig.spec.json",
+              "projects/login-get-create-pet-app/e2e/tsconfig.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -125,17 +125,17 @@
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
-            "protractorConfig": "projects/eszsw-signup-app/e2e/protractor.conf.js",
-            "devServerTarget": "eszsw-signup-app:serve"
+            "protractorConfig": "projects/login-get-create-pet-app/e2e/protractor.conf.js",
+            "devServerTarget": "login-get-create-pet-app:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "eszsw-signup-app:serve:production"
+              "devServerTarget": "login-get-create-pet-app:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "eszsw-signup-app"
+  "defaultProject": "login-get-create-pet-app"
 }

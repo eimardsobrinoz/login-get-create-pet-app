@@ -202,7 +202,7 @@ linkedin.com/in/eimardsobrinozurera
 - Documentation: Click to visit the documentation of the project
 
 ```
-https://gitlab.com/esobrinoz/eszsw-signup-app/-/blob/master/projects/eszsw-signup-app/src/assets/pdf/SignUp-project_Eimard_DOCUMENTATION.pdf
+url
 ```
 
 ## Authors
