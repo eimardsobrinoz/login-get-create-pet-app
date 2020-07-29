@@ -39,21 +39,21 @@
         <ng-container *ngIf="controlValidation.available">
             <ng-container *ngIf="statusPending">
                 <p class="formInputGroup__wrapperInput__text info">
-                Validating email ...
+                Validating usermane ...
                 </p>
                 <eszsw-loading class="formInputGroup__wrapperInput__icon loading"></eszsw-loading>
             </ng-container>
             
             <ng-container *ngIf="!control?.errors?.required && control?.dirty && control?.errors?.mailNotAvailable">
                 <p class="formInputGroup__wrapperInput__text error">
-                    {{errorMsg.mailNotAvailable}}
+                    {{errorMsg.notAvailable}}
                 </p>
                 <mat-icon class="formInputGroup__wrapperInput__icon error">cancel</mat-icon>
             </ng-container>
             
             <ng-container *ngIf="!control?.errors?.required && control?.dirty && control?.valid">
                 <p class="formInputGroup__wrapperInput__text valid" >
-                    Email available
+                    Username available
                 </p>
                 <mat-icon class="formInputGroup__wrapperInput__icon valid">check_circle</mat-icon>
             </ng-container>   

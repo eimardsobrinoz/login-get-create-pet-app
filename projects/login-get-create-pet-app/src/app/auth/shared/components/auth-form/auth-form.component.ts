@@ -1,8 +1,8 @@
 import { Observable, isObservable, Subscription } from 'rxjs';
-import { AuthForm } from './../../interfaces/auth-form.interface';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Validators, AbstractControl, Form } from '@angular/forms';
-import { AuthFormStatus } from '../../interfaces/auth-validation.inteface';
+import { AuthForm } from 'projects/login-get-create-pet-app/src/app/core/interfaces/auth/auth-form.interface';
+import { AuthFormStatus } from 'projects/login-get-create-pet-app/src/app/core/interfaces/auth/auth-validation.inteface';
 
 @Component({
   selector: 'eszsw-auth-form',
@@ -54,9 +54,6 @@ export class AuthFormComponent implements OnInit  {
     (this.formFormat as AuthForm)?.inputsControls?.forEach( control => {
       this.formGroup.addControl(control.name, new FormControl('',[Validators.required]));
     });
-    if (this.formGroup.get('password') && this.formGroup.get('firstname') && this.formGroup.get('lastname')) {
-      this.formGroup.setValidators(this.syncronousNotShareValuesValidator.bind(this));
-    }
   }
 
 
@@ -71,40 +68,10 @@ export class AuthFormComponent implements OnInit  {
         this.validForm = false;
       }
     }));
-
-  }
-
-  public contains(value1:string, value2:string): boolean{
-    let contains:boolean = false;
-    if ((value1.indexOf(value2) > -1) && value2 !== '') {
-      return true;
-    }
-    return contains;
   }
 
   public onSubmit(): void {
     this.onSubmitForm.emit(this.formGroup);
-  }
-
-
-  public syncronousNotShareValuesValidator(formGroup: FormGroup): { [k: string]: boolean } | null {
-    const firstNameControlValue: string = (formGroup.get('firstname') as AbstractControl).value as string;
-    const lastNameControlValue: string = (formGroup.get('lastname') as AbstractControl).value as string;
-    const passwordControl: AbstractControl = formGroup.get('password') as AbstractControl;
-
-    if (this.contains(passwordControl.value,firstNameControlValue) || this.contains(passwordControl.value, lastNameControlValue)) {     
-      if (!passwordControl.hasError('passwordContainsNameOrLastname')) {
-        passwordControl.setErrors({ passwordContainsNameOrLastname: true });
-        passwordControl.updateValueAndValidity;
-      } 
-      return { passwordContainsNameOrLastname: true }
-    } else {
-      if (passwordControl.hasError('passwordContainsNameOrLastname')) {
-        passwordControl.setErrors({ 'passwordContainsNameOrLastname': null });
-        passwordControl.updateValueAndValidity;
-      } 
-      return null;
-    }  
   }
 
   ngOnDestroy(): void {

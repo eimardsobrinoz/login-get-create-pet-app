@@ -10,6 +10,15 @@
     border: 0;
 }
 
+app-toasts.ngb-toasts {
+    top: 10px;
+    right: calc(50% - 140px);
+    margin: 0;   
+    width: 280px;
+    text-align: center;
+    display: block;
+}
+
 
 
 

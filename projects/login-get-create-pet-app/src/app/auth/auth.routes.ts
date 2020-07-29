@@ -1,5 +1,5 @@
+import { RoutePath } from 'projects/login-get-create-pet-app/src/app/core/enums/route.paths';
 import { CompleteFormGuard } from './../core/guards/completeForm/complete-form.guard';
-import { RoutePath } from '../core/enums/route.paths';
 import { MailConfirmComponent } from './pages/mail-confirm/mail-confirm/mail-confirm.component';
 import { ResetPasswordComponent } from './pages/reset-password/reset-password/reset-password.component';
 import { SignupComponent } from './pages/signup/signup.component';

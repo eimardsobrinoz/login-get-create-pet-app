@@ -1,32 +1,7 @@
-@import 'util/variables.scss';
+// Generic styles for Authcomponents
 
-.form {
-    margin-bottom:20px;
-}
-.form__fieldset {
-    border:none;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    box-sizing: border-box;
-}
-.form__btn {
-    width:200px;
-    padding:10px;
-    text-align: center;
-    font-size: 1rem;
-    border-radius: 4px;
-    border: 1px solid $esz-black;
-    font-weight: bold;
-    background: $esz-black;
-    color:$esz-white;
-    &.active, &:hover, &:focus {
-        background: $esz-black-light;
-        outline: none;
-    }
-    &.disabled {
-        background: $esz-gray;
-        border-color: $esz-gray;
-    }
+.customControl {
+    display: block;
+    margin-bottom:15px;
 }
 

@@ -1,8 +1,8 @@
 import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
-import { AuthForm } from '../../../shared/interfaces/auth-form.interface';
 import { AuthService } from 'projects/login-get-create-pet-app/src/app/core/services/auth-service/auth.service';
 import { AuthComponentsTag } from 'projects/login-get-create-pet-app/src/app/core/enums/component-tags';
+import { AuthForm } from 'projects/login-get-create-pet-app/src/app/core/interfaces/auth/auth-form.interface';
 
 @Component({
   selector: 'eszsw-mail-confirm',

@@ -16,7 +16,7 @@ export class CompleteFormGuard implements CanDeactivate<SignupComponent> {
     const status: boolean = comp.formComponent.formGroup.pristine || comp.formComponent.formGroup.valid || window.confirm('Form not completed! Are you sure you want to exit?');
     // Instead of window.confirm, It is perfect to build a custom confirm dialog component 
 
-    return status;;
+    return status;
   }
   
 }

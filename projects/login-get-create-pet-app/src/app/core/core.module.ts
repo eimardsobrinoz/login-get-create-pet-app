@@ -6,11 +6,13 @@ import { MainLayoutComponent } from './layout/main-layout/main-layout.component'
 import { AsideLeftComponent } from './layout/aside-left/aside-left.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ErrorInterceptor } from './interceptor/error.interceptor';
+import { LoadingModalComponent } from '../shared/components/loading-modal/loading-modal.component';
 
 @NgModule({
   declarations: [
     MainLayoutComponent,
-    AsideLeftComponent
+    AsideLeftComponent,
+    LoadingModalComponent
   ],
   imports: [
     BrowserModule,

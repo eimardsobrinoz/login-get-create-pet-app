@@ -23,13 +23,13 @@ export class ErrorService {
       case ClientError.HTTP_400_BAD_REQUEST:
         break;
       default:
-        alert('Unkown Error Code');
+        // alert('Unkown Error Code');
     }
     this.notifyUser(errorType,errorMessage);
   }
 
   // We can send error information to Kibana to track the errors
   public notifyUser(errorType:string, notification: string):void {
-    alert(errorType + notification);
+    // alert(errorType + notification);
   }
 }

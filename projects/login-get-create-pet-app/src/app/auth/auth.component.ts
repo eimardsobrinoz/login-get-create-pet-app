@@ -9,6 +9,7 @@ import { RoutePath } from '../core/enums/route.paths';
 import { ResetPasswordComponent } from './pages/reset-password/reset-password/reset-password.component';
 import { MailConfirmComponent } from './pages/mail-confirm/mail-confirm/mail-confirm.component';
 import { Subscription } from 'rxjs';
+import { ToastService } from '../core/services/toast-service/toast.service';
 
 @Component({
   selector: 'eszsw-auth',
@@ -29,7 +30,7 @@ export class AuthComponent implements OnInit, OnDestroy{
 
   public context: string;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, public toastService: ToastService) {}
 
   ngOnInit(): void {
     this.initialize();

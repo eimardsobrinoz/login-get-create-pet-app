@@ -1,11 +1,13 @@
+import { AccountService } from 'projects/login-get-create-pet-app/src/app/core/services/account-service/account.service';
+import { Router } from '@angular/router';
 import { FormGroup } from '@angular/forms';
 import { RoutePath } from '../../../core/enums/route.paths';
 import { AuthService } from 'projects/login-get-create-pet-app/src/app/core/services/auth-service/auth.service';
-import { AuthForm } from './../../shared/interfaces/auth-form.interface';
 import { Component, OnInit } from '@angular/core';
 import { AuthComponentsTag } from '../../../core/enums/component-tags';
-import { Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import { AuthForm } from '../../../core/interfaces/auth/auth-form.interface';
+import { ToastService } from '../../../core/services/toast-service/toast.service';
 
 @Component({
   selector: 'eszsw-login',
@@ -19,7 +21,8 @@ export class LoginComponent implements OnInit {
   public linkLbl: string;
   public linkPath: string;
 
-  constructor(private authService: AuthService, private router: Router, private route: ActivatedRoute) {
+  constructor(private authService: AuthService, private router: Router, 
+              private toastService: ToastService, private accountService: AccountService) {
   }
 
   ngOnInit(): void {
@@ -38,7 +41,20 @@ export class LoginComponent implements OnInit {
   }
 
   public login(form: FormGroup): void {
-    this.router.navigate([RoutePath.MAIL_CONFIRMATION], { relativeTo: this.route });
+    this.accountService.setLoading(true);
+    const username: string = form.get('username')?.value;
+    const password: string = form.get('password')?.value;
+    this.authService.signIn(username, password).subscribe( 
+      res => {
+        console.log('Emilio success login: ',res);
+        this.authService.setUserLogged(true);
+        this.router.navigate([RoutePath.HOME]);
+      },
+      error => {
+        this.toastService.showError('Try again with other values', 2, 'Incorrect credentials!');
+      },
+      () => this.accountService.setLoading(false)
+    );
   }
 
   get getComponentTag() {

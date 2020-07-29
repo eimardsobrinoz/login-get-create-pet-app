@@ -3,6 +3,6 @@ export interface ErrorFormMessage {
   format?: string;
   minLength?: string;
   lowerUppercaseFormat?: string;
-  mailNotAvailable?: string;
+  notAvailable?: string;
   containsOthersControlsValue?:string;
 }

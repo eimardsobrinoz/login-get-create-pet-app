@@ -1,0 +1,32 @@
+<h3 class="subtitle">Pets</h3>
+<div class="contentTabs">
+    <button class="contentTabs__option" 
+    [ngClass]="{'active' : (petStatus =='available')}" 
+    (click)="getPets('available')">
+    Available
+    </button>
+
+    <button class="contentTabs__option" 
+    (click)="getPets('pending')"
+    [ngClass]="{'active' : (petStatus =='pending')}">
+    Pending
+    </button>
+
+    <button class="contentTabs__option" 
+    [ngClass]="{'active' : (petStatus =='sold')}" 
+    (click)="getPets('sold')">
+    Sold
+    </button>
+</div>
+
+ 
+<ul class="petList">
+    <li class="petList__element" *ngFor="let pet of pets">
+        <img class="petList__element__img" [src]="petImgPath">
+        <h4 class="petList__element__title">{{pet.name? pet.name : '-no name-'}}</h4>
+    </li>
+</ul>
+
+
+  
+

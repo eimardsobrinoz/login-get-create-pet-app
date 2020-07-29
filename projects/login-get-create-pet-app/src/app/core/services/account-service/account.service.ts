@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { User } from '../../interfaces/user-interface';
+import { User } from '../../interfaces/user/user-interface';
+import { Subject, Observable, BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -7,6 +8,8 @@ import { User } from '../../interfaces/user-interface';
 export class AccountService {
 
   private _activeUser: User | null;
+  private loading: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  public loading$: Observable<boolean> = this.loading.asObservable();
 
   constructor() { }
 
@@ -24,5 +27,9 @@ export class AccountService {
   
   public setActiveUser(user: User | null): void {
     this._activeUser = user;
+  }
+
+  public setLoading(status: boolean): void {
+    this.loading.next(status);
   }
 }

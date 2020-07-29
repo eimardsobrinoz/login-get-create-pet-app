@@ -1,3 +1,4 @@
+import { AccountService } from 'projects/login-get-create-pet-app/src/app/core/services/account-service/account.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,6 +8,6 @@ import { Component } from '@angular/core';
 })
 export class MainLayoutComponent {
 
-  constructor() { }
+  constructor(public accountService:AccountService) { }
 
 }

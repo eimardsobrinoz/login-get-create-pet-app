@@ -1,3 +1,5 @@
+import { AdminComponent } from './features/admin/admin.component';
+import { HomeComponent } from './features/home/home.component';
 import { AuthGuard } from './core/guards/auth/auth.guard';
 import { RoutePath } from 'projects/login-get-create-pet-app/src/app/core/enums/route.paths';
 import { RouterModule, Routes } from '@angular/router';
@@ -7,15 +9,17 @@ const routes: Routes = [
     {
       path: '',
       pathMatch: 'full',
-      redirectTo: 'auth' 
+      redirectTo: RoutePath.HOME 
     },
     {
       path: RoutePath.HOME,
+      component: HomeComponent,
       canActivate: [AuthGuard],
       loadChildren: () => import('./features/home/home.module').then(m => m.HomeModule) 
     },
     { 
       path: RoutePath.ADMIN,
+      component: AdminComponent,
       canActivate: [AuthGuard],
       // Interesting to use canLoad guard, to inject an step before loading the children routes.
       // canLoad:[adminPermisionsGuard]
@@ -27,7 +31,7 @@ const routes: Routes = [
     },
     {
       path: '**',
-      redirectTo: 'auth' 
+      redirectTo: RoutePath.HOME 
     } 
   ];
 

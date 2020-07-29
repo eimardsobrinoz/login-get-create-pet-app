@@ -12,7 +12,7 @@ export class ErrorInterceptor implements HttpInterceptor {
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         return next.handle(request).pipe(
-            retry(1),
+            // retry(1),
             catchError( (err: HttpErrorResponse) =>  this.handleError(err)
         ))
     }
@@ -27,7 +27,7 @@ export class ErrorInterceptor implements HttpInterceptor {
       console.log('An error occurred: ',error.message);
     } else {
       this.errorService.whichError(error.status, error.message);
-      error$ = throwError( {error: error.message, status: error.status});
+      error$ = throwError( {error: error.message, status: error.status, errorMessage: error.error.message});
     }
     return error$;
   }

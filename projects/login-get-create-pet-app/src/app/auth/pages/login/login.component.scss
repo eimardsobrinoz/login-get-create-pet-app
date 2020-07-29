@@ -1,1 +1,11 @@
 
+@import 'util/variables.scss';
+
+// Tablet resolution
+@media(min-width:$esz-min-tablet-resolution) {
+    :host {
+        display:block;
+        padding-top:100px;
+    }
+}
+

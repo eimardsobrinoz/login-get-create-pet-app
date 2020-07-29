@@ -1,14 +1,12 @@
-import { AuthFormStatus } from './../../interfaces/auth-validation.inteface';
-import { ErrorFormMessage } from './../../interfaces/error-form-message.interface';
 import { Component, OnInit, Input, Self, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 import {
   ControlValueAccessor, Validator, AbstractControl, ValidatorFn, Validators,
   NgControl, AsyncValidatorFn
 } from '@angular/forms';
-import { AuthValidation } from '../../interfaces/auth-validation.inteface';
 import { AuthService } from 'projects/login-get-create-pet-app/src/app/core/services/auth-service/auth.service';
-import { delay } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
+import { AuthValidation, AuthFormStatus } from 'projects/login-get-create-pet-app/src/app/core/interfaces/auth/auth-validation.inteface';
+import { ErrorFormMessage } from 'projects/login-get-create-pet-app/src/app/core/interfaces/errors/error-form-message.interface';
 
 @Component({
   selector: 'eszsw-custom-input',
@@ -118,7 +116,7 @@ export class CustomInputComponent implements ControlValueAccessor, Validator, On
   }
   public setASyncronousValidation(asyncValidators: AsyncValidatorFn[]): void {
     if (this.controlValidation.available) {
-      asyncValidators.push(this.availableMail.bind(this));
+      asyncValidators.push(this.availableUser.bind(this));
     }
   }
 
@@ -133,25 +131,20 @@ export class CustomInputComponent implements ControlValueAccessor, Validator, On
   }
 
   // Asyncronous Validation example
-  public availableMail(control: AbstractControl): Promise<{ [k: string]: boolean } | null> {
-    this.authService.isValidEmail(control.value);
+  public availableUser(control: AbstractControl): Promise<{ [k: string]: boolean } | null> {
+    this.authService.isValidUser(control.value);
 
     return new Promise<{ [k: string]: boolean } | null>((resolve, reject) => {
       // Emulating checking in the data Base if it is available with delay operator
-      this.subscriptions.push(this.authService.isValidEmail(control.value)
-        .pipe(
-          delay(500)
-        )
+      this.subscriptions.push(this.authService.isValidUser(control.value)
         .subscribe(
           status => {
-            // test unhappy scenario typing 'email@error.co') or changing the flat status to false in mocks
-            if (status && control.value !== 'email@error.co') {
-              resolve(null);
-            } else {
-              resolve({ mailNotAvailable: true })
-            }
+            // If it is true, that means this user already exist
+            resolve({ mailNotAvailable: true })
           },
-          error => reject()
+          error => {
+            resolve(null);
+          }
         ));
     });
   }

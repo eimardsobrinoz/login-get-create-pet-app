@@ -1,4 +1,4 @@
-import { CustomInput } from '../models/custom-input-model';
+import { CustomInput } from '../../models/custom-input-model';
 
 export class AuthForm {
     inputsControls: CustomInput[];

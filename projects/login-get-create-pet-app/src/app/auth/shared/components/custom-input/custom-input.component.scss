@@ -7,7 +7,6 @@
 }
 .formInputGroup__wrapperInput {
     position: relative;
-    margin-bottom:20px;
 }
 
 .formInputGroup__wrapperInput__input {
@@ -61,7 +60,7 @@
 
 .formInputGroup__wrapperInput__icon {
     position: absolute;
-    top: 8px;
+    top: 10px;
     right: 12px;
     &.valid {
         color: $esz-green;

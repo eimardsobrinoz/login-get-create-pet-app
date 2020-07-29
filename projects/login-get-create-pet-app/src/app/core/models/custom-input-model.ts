@@ -1,5 +1,6 @@
-import { ErrorFormMessage } from '../interfaces/error-form-message.interface';
-import { AuthValidation } from '../interfaces/auth-validation.inteface';
+import { ErrorFormMessage } from '../interfaces/errors/error-form-message.interface';
+import { AuthValidation } from '../interfaces/auth/auth-validation.inteface';
+
 
 export class CustomInput {
     label: string;

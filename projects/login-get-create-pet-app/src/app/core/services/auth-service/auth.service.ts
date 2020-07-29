@@ -1,5 +1,6 @@
+import { HttpParams } from '@angular/common/http';
 import { RoutePath } from 'projects/login-get-create-pet-app/src/app/core/enums/route.paths';
-import { User } from './../../interfaces/user-interface';
+import { User } from '../../interfaces/user/user-interface';
 import { environment } from 'projects/login-get-create-pet-app/src/environments/environment';
 import { HttpService } from './../http-service/http.service';
 import { Injectable } from '@angular/core';
@@ -7,14 +8,16 @@ import { StorageService } from '../storage-service/storage.service';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthEndPoints, ApiMethod } from '../../enums/endpoints';
-import { AuthForm } from '../../../auth/shared/interfaces/auth-form.interface';
 import { map } from 'rxjs/operators';
 import { AccountService } from '../account-service/account.service';
+import { AuthForm } from '../../interfaces/auth/auth-form.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+
+  _usserLogged: boolean =  false;
 
   constructor(
     private httpService: HttpService,
@@ -23,36 +26,45 @@ export class AuthService {
     private accountService: AccountService
   ) { }
 
-  public signUp(user: User): Observable<User> {
-    // this.storage.saveToken(res.auth_token);
-    this.storage.setLocalObject('user', JSON.stringify(user));
-    // this.activeUser$.next(user);
-    return this.httpService.requestCall(AuthEndPoints.SIGNUP, ApiMethod.POST, environment.apiUrl, user) as Observable<User>;
+  public signIn(username:string, password: string): Observable<User> {
+    let params: HttpParams = new HttpParams()
+      .set('username', username)
+      .set('password', password);
+    return this.httpService.requestCall(ApiMethod.GET, environment.apiUrl, AuthEndPoints.LOGIN, undefined, params) as Observable<any>;
   }
 
-  public logout(): void {
-    localStorage.removeItem('user');
-    // this.activeUser$.next(null);
-    this.accountService.setActiveUser(null);
-    this.router.navigate([RoutePath.LOGIN]);
+  public signUp(user: User): Observable<User> {
+    this.httpService.setHeaders("Content-Type", "application/json")
+    return this.httpService.requestCall(ApiMethod.POST, environment.apiUrl, AuthEndPoints.SIGNUP, user) as Observable<any>;
+  }
+
+  public logout(): Observable<User> {
+    return this.httpService.requestCall(ApiMethod.GET, environment.apiUrl, AuthEndPoints.LOGOUT) as Observable<any>;
+  }
+
+  public isValidUser(user: string): Observable<any> {
+    return this.httpService.requestCall(ApiMethod.GET, environment.apiUrl, `${AuthEndPoints.USER_REGISTERED}/${user}`)
+          .pipe(map( res => res.status));
+  }
+
+  public get isLogged(): boolean {
+    return this._usserLogged;
+  }
+  public setUserLogged(status: boolean) {
+    this._usserLogged = status;
   }
 
   public getLoginForm(): Observable<AuthForm>  {
-    return this.httpService.requestCall(AuthEndPoints.LOGIN_FORM, ApiMethod.GET, environment.apiAuthUrl) as Observable<AuthForm>;
+    return this.httpService.requestCall(ApiMethod.GET, environment.apiAuthUrl, AuthEndPoints.LOGIN_FORM) as Observable<AuthForm>;
   }
   public getSignUpForm(): Observable<AuthForm> {
-    return this.httpService.requestCall(AuthEndPoints.SIGN_UP_FORM, ApiMethod.GET, environment.apiAuthUrl) as Observable<AuthForm>;
+    return this.httpService.requestCall(ApiMethod.GET, environment.apiAuthUrl, AuthEndPoints.SIGN_UP_FORM) as Observable<AuthForm>;
   }
   public getResetPasswordForm(): Observable<AuthForm> {
-    return this.httpService.requestCall(AuthEndPoints.RESET_PASSWORD_FORM, ApiMethod.GET, environment.apiAuthUrl) as Observable<AuthForm>;
+    return this.httpService.requestCall(ApiMethod.GET, environment.apiAuthUrl, AuthEndPoints.RESET_PASSWORD_FORM) as Observable<AuthForm>;
   }
   public getMailConfirmForm(): Observable<AuthForm> {
-    return this.httpService.requestCall(AuthEndPoints.MAIL_CONFIRMATION_FORM, ApiMethod.GET, environment.apiAuthUrl) as Observable<AuthForm>;
-  }
-
-  public isValidEmail(email: string): Observable<any> {
-    return this.httpService.requestCall(AuthEndPoints.EMAIL_REGISTERED, ApiMethod.GET, environment.apiAuthUrl, email)
-          .pipe(map( res => res.status));
+    return this.httpService.requestCall(ApiMethod.GET, environment.apiAuthUrl, AuthEndPoints.MAIL_CONFIRMATION_FORM) as Observable<AuthForm>;
   }
 
 }
