@@ -2,20 +2,20 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.0.
 
-It consits in a single page app with a sign-up form.
-The form should allow users to enter first name, last name, email, and password, and all the fields
-are required.
+Single page application with a great scalable and reusable architecture using reactive and dynamic forms, validations and access the Swagger pet shop Rest API back-end integrate with docker.###
 
+ FORMs Validation
 • Password and email validation:
 
 - Should be a minimum of eight characters,
 - Should contain lower and uppercase letters,
-- Should not contain user’s first or last name.
 
-- Email validate used pattern and asyncronous validation checking if it is registered emulating api call.
-- The form send a POST request to https://demo-api.now.sh/users with the below request body example:
+- Email validate used pattern and asyncronous username validation checking if it is registered calling api call.
 
-{ firstName: "Eimard", lastName: "Sobrino", email: "eimard@sobrino.co.uk" }
+It is an Angular app which accesses the Swagger pet shop Rest API back-end running locally and provides the following functionality:
+1. Login page
+2. Page to create a pet
+3. Page to get the pet by Id
 
 ## Getting Started
 
@@ -53,6 +53,13 @@ Install Json server via npm global and locally where considered
 Install webpack analyzer
 ```
 `npm i -D webpack-bundle-analyzer`
+```
+
+Install docker following the below link. If you count with a Windows Machine, depending on your version you will have to install desktop docker version (Windows 10 Home and PRO) or docker tool along with virtual machine ( > Windows 10)
+
+```
+https://docs.docker.com/docker-for-windows/install/
+
 ```
 
 ### Installing
@@ -143,6 +150,7 @@ Check in browser: http://127.0.0.1:8888/
 Head for the signup page clicking on the top right link "Sign up".
 Complete the form and once the form is valid, you will be redirected to home screen. 
 Once there you can go back cloking on logout.
+Here you are able to create a new user in the data base.
 
 # LOGIN 
 In this screen, you have to complete the form, and once it is valid, clicking on sign In you will be redirected to mail confirmation page.
@@ -152,9 +160,14 @@ It is posible to navigate to the different pages through the links.
 Normal Flow, clicking on: 
 - Sign in link --> Login scren
 - Sign up link--> Sign up screen
-- Login screen (Sign in button) --> Mail confirmation screen
+- Login screen (url: mailConfirmation) --> Mail Confirmation
+- Login screen (Sign in button) --> Pets screen (Home screen)
 - Login screen (forgot password) --> Reset password screen
 - Sign up screen (btn) --> Home screen
+- Home Screen == Pets Screen
+- Home Screen (+ icon) --> Create Pet Screen
+- Home Screen  (Search icon) ==> Search Pet by screen
+- Home Screen (admin option menu) --> Admin Screen
 
 # GUARDS
 - Complete Form Guard
@@ -172,13 +185,25 @@ Required validator
 Required,
 Min lenth 8,
 It should contains uppercase and lowercase,
-it should not contains either firstname or lastname
 
 
 - Email
 Required validator, 
-PAttern validator,
-Asyncronous validation to check if the email is already registered
+PAttern validator
+
+- Username
+Asyncronous validation to check if the username is already registered calling its corresponding endpoint.
+
+# CHECK PET LIST
+Here you can have a look at the pets depending on their status (available, pending, sold)
+
+
+# SEARCH PET BY ID
+Check if a specific pet exist and have a look at its photos, status, category, name, etc.
+
+# CREATE A PRE
+You will be able to create a pet and save it in the data base and check it in the pets page.
+Inputs: Category, name, status (available, pending, sold), photos, etc...
 
 # HANDLE ERROR
 When executing http call, when receiving 401 error code (Unauthorized) the user will be logged out automatically, thanks for error handler in httpinterceptor.
@@ -228,6 +253,9 @@ CSS grid, angular material GRID, Bootstrap GRID)
 * CSS: Nomenclature BEM applied
 * I applied principles of WEb Accessibility (WCAG)
 * Use of Web Pack analytics
+* Custom components loading
+* Guards
+* etc ...
 
 
 

@@ -38,7 +38,7 @@ export class AsideLeftComponent implements OnInit, AfterViewInit {
     this.linkedinPath = "https://www.linkedin.com/in/eimardsobrinozurera/";
     this.webSiteLinkTitle = "Official Eimard's web site";
     this.linkedinLinkTitle = "Eimard's linkedin profile";
-    this.documentPath = "./assets/pdf/SignUp-project_Eimard_DOCUMENTATION.pdf";
+    this.documentPath = "./assets/pdf/petStoreApp_Eimard_DOCUMENTATION.pdf";
     this.documentTitle = "Project documentation";
   }
 
