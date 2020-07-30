@@ -2,7 +2,7 @@ import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'projects/login-get-create-pet-app/src/app/core/services/auth-service/auth.service';
 import { AuthComponentsTag } from 'projects/login-get-create-pet-app/src/app/core/enums/component-tags';
-import { AuthForm } from 'projects/login-get-create-pet-app/src/app/core/interfaces/auth/auth-form.interface';
+import { FormFormat } from 'projects/login-get-create-pet-app/src/app/core/interfaces/auth/form.interface';
 
 @Component({
   selector: 'eszsw-mail-confirm',
@@ -11,7 +11,7 @@ import { AuthForm } from 'projects/login-get-create-pet-app/src/app/core/interfa
 })
 export class MailConfirmComponent implements OnInit {
 
-  public mailConfirmForm: AuthForm | Observable<AuthForm>;
+  public mailConfirmForm: FormFormat | Observable<FormFormat>;
   public mailConfirmtxt: string;
   public textLink: string;
   public linkLbl: string;

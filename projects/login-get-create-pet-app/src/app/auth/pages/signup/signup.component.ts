@@ -1,6 +1,4 @@
-import { RoutePath } from 'projects/login-get-create-pet-app/src/app/core/enums/route.paths';
 import { User } from '../../../core/interfaces/user/user-interface';
-import { AuthFormComponent } from './../../shared/components/auth-form/auth-form.component';
 import { AuthService } from 'projects/login-get-create-pet-app/src/app/core/services/auth-service/auth.service';
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { AuthComponentsTag } from '../../../core/enums/component-tags';
@@ -9,8 +7,9 @@ import { Observable } from 'rxjs/internal/Observable';
 import { Router } from '@angular/router';
 import { AccountService } from '../../../core/services/account-service/account.service';
 import { Subscription } from 'rxjs';
-import { AuthForm } from '../../../core/interfaces/auth/auth-form.interface';
 import { ToastService } from '../../../core/services/toast-service/toast.service';
+import { GenericFormComponent } from '../../../shared/components/generic-form/generic-form.component';
+import { FormFormat } from '../../../core/interfaces/auth/form.interface';
 
 @Component({
   selector: 'eszsw-signup',
@@ -19,10 +18,10 @@ import { ToastService } from '../../../core/services/toast-service/toast.service
 })
 export class SignupComponent implements OnInit, OnDestroy {
 
-  @ViewChild('formComponent') formComponent:AuthFormComponent;
+  @ViewChild('formComponent') formComponent:GenericFormComponent;
 
   public subscription: Subscription[];
-  public signUpForm: AuthForm | Observable<AuthForm>;
+  public signUpForm: FormFormat | Observable<FormFormat>;
 
   constructor(private authService: AuthService, private accountService: AccountService, 
               private router: Router, private toastService: ToastService) { }
@@ -53,13 +52,11 @@ export class SignupComponent implements OnInit, OnDestroy {
       userStatus: 0
     }
     this.subscription.push(this.authService.signUp(user).subscribe( 
-      message => {
+      () => {
         this.toastService.showSuccess('Successfully user created', 3); 
         form.reset({});
       },
-      error => {
-        this.toastService.showError('User not created', 3, 'Error!'); 
-      }
+      () => this.toastService.showError('User not created', 3, 'Error!')
     ));
   }
   

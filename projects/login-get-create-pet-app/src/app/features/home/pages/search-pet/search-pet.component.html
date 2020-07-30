@@ -1,1 +1,37 @@
-<p>search-pet works!</p>
+<h1 class="subtitle">SEARCH PET</h1>
+<div class="contentForm">
+  <eszsw-generic-form class="formLayout" [formFormat$]="searchPetForm" (onSubmitForm)="getPet($event)"></eszsw-generic-form>
+</div>
+
+<div class="wrapperContent">
+    <div *ngIf="pet else noPetFound" class="wrapperContent__contentPet">
+        <h4 class="wrapperContent__contentPet__name">
+            {{pet.name ? pet.name : '-no name-'}}
+        </h4>
+        <p class="wrapperContent__contentPet__keyTxt">
+            Category:
+            <span class="wrapperContent__contentPet__keyTxt__value">
+                {{pet.category?.name? pet.category?.name : 'no category'}}
+            </span>
+        </p>
+        <p class="wrapperContent__contentPet__keyTxt">
+            Status:
+            <span class="wrapperContent__contentPet__keyTxt__value">
+                {{pet.status}}
+            </span>
+        </p>
+        <p class="wrapperContent__contentPet__photo">
+            Photos
+        </p>
+        <ul class="wrapperContent__contentPet__contentImgs">
+            <li class="wrapperContent__contentPet__contentImgs__element" *ngFor="let img of pet.photoUrls">
+                <img class="wrapperContent__contentPet__contentImgs__img" [src]="img? img : noImgPath">
+            </li>
+        </ul>
+    </div>
+    <ng-template #noPetFound>
+        <p class="wrapperContent__infoSearch">{{infoSearch}}</p>
+    </ng-template>
+</div>
+
+<eszsw-text-link [text]="backTextLink" [linkLbl]="backLinkLbl" [linkPath]="backLinkPath"></eszsw-text-link>

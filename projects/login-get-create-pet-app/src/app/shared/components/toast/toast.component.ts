@@ -3,7 +3,7 @@ import { Component, TemplateRef } from '@angular/core';
 import { ToastService } from '../../../core/services/toast-service/toast.service';
 
 @Component({
-  selector: 'app-toasts',
+  selector: 'toast-notification',
   templateUrl: './toast.component.html',
   host: { '[class.ngb-toasts]': 'true' }
 })

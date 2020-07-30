@@ -1,0 +1,70 @@
+<div class="formControlGroup">
+
+    <!-- LABEL -->
+    <label class="formControlGroup__label" [for]="inputId">{{label}} 
+        <span *ngIf="controlValidation.required">*</span>
+    </label>
+
+    <div class="formControlGroup__wrapperInput">
+
+        <!-- INPUT -->
+        <input #input
+        [id]= "inputId"
+        class="formControlGroup__wrapperInput__input" 
+        [disabled]="isDisabled"
+        [ngClass]="{'error' : isThereError, 'email': type ==='email', 'withIcon': hasIcon }"
+        [type]="type"  
+        [placeholder]="placeholder"
+        (input)="onChange($event.target.value)"
+        (blur)="onTouched()"> 
+
+        <!-- INPUT ICONS -->
+        <mat-icon *ngIf="type === 'email'" class="formControlGroup__wrapperInput__input__icon">mail</mat-icon>
+        <mat-icon *ngIf="type === 'password'" class="formControlGroup__wrapperInput__input__icon">vpn_key</mat-icon>
+
+
+        <!-- SYNCRONOUS VALIDATION -->
+        <p class="formControlGroup__wrapperInput__text error" *ngIf="control?.touched && control?.errors?.required">
+            {{errorMsg.required}}
+        </p>
+        <p class="formControlGroup__wrapperInput__text error" *ngIf="control?.touched && control?.errors?.minlength">
+            Password should be a minimum of {{control?.errors?.minlength?.requiredLength}} characters
+        </p>
+        <p class="formControlGroup__wrapperInput__text error"
+        *ngIf="control?.touched && control?.errors?.lowerUppercaseFormat && !control?.errors?.required">
+            {{errorMsg.lowerUppercaseFormat}}
+        </p>
+        <p class="formControlGroup__wrapperInput__text error" *ngIf="control?.touched && control?.errors?.pattern">
+            {{errorMsg.format}} testing
+        </p>
+        <p class="formControlGroup__wrapperInput__text error" *ngIf="control?.touched && control?.errors?.passwordContainsNameOrLastname">
+            Password should not contain user’s first or last name
+        </p>
+
+        <!-- ASYNCRONOUS VALIDATION -->
+        <ng-container *ngIf="controlValidation.available">
+            <ng-container *ngIf="statusPending">
+                <p class="formControlGroup__wrapperInput__text info">
+                Validating usermane ...
+                </p>
+                <eszsw-loading class="formControlGroup__wrapperInput__icon loading"></eszsw-loading>
+            </ng-container>
+            
+            <ng-container *ngIf="!control?.errors?.required && control?.dirty && control?.errors?.mailNotAvailable">
+                <p class="formControlGroup__wrapperInput__text error">
+                    {{errorMsg.notAvailable}}
+                </p>
+                <mat-icon class="formControlGroup__wrapperInput__icon error">cancel</mat-icon>
+            </ng-container>
+            
+            <ng-container *ngIf="!control?.errors?.required && control?.dirty && control?.valid">
+                <p class="formControlGroup__wrapperInput__text valid" >
+                    Username available
+                </p>
+                <mat-icon class="formControlGroup__wrapperInput__icon valid">check_circle</mat-icon>
+            </ng-container>   
+        </ng-container>
+
+    </div>
+
+</div>

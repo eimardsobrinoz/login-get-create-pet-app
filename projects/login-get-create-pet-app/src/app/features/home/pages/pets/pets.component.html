@@ -1,4 +1,12 @@
-<h3 class="subtitle">Pets</h3>
+<h3 class="subtitle">PETS
+    <a href="#" class="subtitle__link" [routerLink]="searchPetByIDPath">
+        <mat-icon title="Add new PET" class="subtitle__link__icon">add_circle</mat-icon>
+
+    </a>
+    <a href="#" class="subtitle__link" [routerLink]="createPEtPath">
+        <mat-icon title="Search PET by ID" class="subtitle__link__icon">search</mat-icon>
+    </a>
+</h3>
 <div class="contentTabs">
     <button class="contentTabs__option" 
     [ngClass]="{'active' : (petStatus =='available')}" 
@@ -22,7 +30,7 @@
  
 <ul class="petList">
     <li class="petList__element" *ngFor="let pet of pets">
-        <img class="petList__element__img" [src]="petImgPath">
+        <img class="petList__element__img" [src]="pet.photoUrls[0]? pet.photoUrls[0] : noImgPath">
         <h4 class="petList__element__title">{{pet.name? pet.name : '-no name-'}}</h4>
     </li>
 </ul>

@@ -1,14 +1,14 @@
-export interface AuthValidation {
+export interface FormValidation {
   required: boolean;
   email?: boolean;
   pattern?: string;
   available?: boolean;
   minLength?: number;
   lowerUppercaseFormat?: boolean;
-  containsOthersControlsValue: string[]
+  containsOthersControlsValue?: string[]
 }
 
-export enum AuthFormStatus {
+export enum FormFormatStatus {
   VALID = "VALID",
   INVALID = "INVALID",
   PENDING = "PENDING"

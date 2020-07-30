@@ -1,5 +1,6 @@
 @import 'util/variables.scss';
 
+// Generic styles for Authcomponents
 .form {
     margin-bottom:20px;
 }
@@ -33,4 +34,35 @@
 .form__btn--white {
     color: $esz-black;
     background: $esz-white;
+}
+.form__contentSelects {
+    margin-bottom: 30px;
+}
+.form__contentSelects__select {
+    width: 100%;
+    height: 44px;
+}
+.form__upload {
+    margin-bottom: 10px;
+}
+.customControl {
+    display: block;
+    margin-bottom:15px;
+}
+
+.contentLine {
+    margin-bottom: 10px;
+    .line {
+        height: 1px;
+        border-bottom: 1px solid black;
+        width: 45%;
+        display: inline-block;
+    }
+    .linetxt {
+        width: 10%;
+        display: inline-block;
+        text-align: center;
+        padding-top: 2px;
+        vertical-align: middle;
+    }
 }

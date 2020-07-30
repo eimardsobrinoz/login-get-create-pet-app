@@ -26,7 +26,7 @@ export class ErrorInterceptor implements HttpInterceptor {
     if(error.error instanceof ErrorEvent) {
       console.log('An error occurred: ',error.message);
     } else {
-      this.errorService.whichError(error.status, error.message);
+      this.errorService.whichError(error.status, error.message, error.error.message);
       error$ = throwError( {error: error.message, status: error.status, errorMessage: error.error.message});
     }
     return error$;

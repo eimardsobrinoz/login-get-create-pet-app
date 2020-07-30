@@ -2,6 +2,7 @@
   "loginForm": {
     "inputsControls": [
       {
+        "inputId": "loginusername",
         "label": "Username",
         "errorMsg": {
           "required": "Enter username"
@@ -12,6 +13,7 @@
         }
       },
       {
+        "inputId": "loginpassword",
         "label": "Password",
         "errorMsg": {
           "required": "Passwors field is required",
@@ -31,6 +33,7 @@
   "signupForm": {
     "inputsControls": [
       {
+        "inputId": "aignupusername",
         "label": "Username",
         "errorMsg": {
           "required": "Enter username",
@@ -43,6 +46,7 @@
         }
       },
       {
+        "inputId": "signupfirstname",
         "label": "First name",
         "errorMsg": {
           "required": "Enter first name"
@@ -53,6 +57,7 @@
         }
       },
       {
+        "inputId": "signupfirstname",
         "label": "Last name",
         "errorMsg": {
           "required": "Enter last name"
@@ -63,6 +68,7 @@
         }
       },
       {
+        "inputId": "signupemail",
         "label": "Email",
         "errorMsg": {
           "required": "Email field is required",
@@ -77,6 +83,7 @@
         }
       },
       {
+        "inputId": "signuppassword",
         "label": "Password",
         "errorMsg": {
           "required": "Passwors field is required",
@@ -91,6 +98,7 @@
         }
       },
       {
+        "inputId": "signupphone",
         "label": "Phone",
         "errorMsg": {
           "required": "Enter phone number"
@@ -106,6 +114,7 @@
   "mailConfirmationForm": {
     "inputsControls": [
       {
+        "inputId": "verificstionMail",
         "label": "Verification email",
         "errorMsg": {
           "required": "Enter verification email",
@@ -125,6 +134,7 @@
   "resetPasswordForm": {
     "inputsControls": [
       {
+        "inputId": "signupcurrentpassword",
         "label": "Current Password",
         "errorMsg": {
           "required": "Enter current password",
@@ -139,6 +149,7 @@
         }
       },
       {
+        "inputId": "signupnewpassword1",
         "label": "New Password",
         "errorMsg": {
           "required": "Enter new password",
@@ -153,6 +164,7 @@
         }
       },
       {
+        "inputId": "signupnewpassword2",
         "label": "Repeat new password",
         "errorMsg": {
           "required": "Passwors field is required confirmation",

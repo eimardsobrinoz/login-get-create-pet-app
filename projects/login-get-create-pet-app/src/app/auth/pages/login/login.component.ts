@@ -6,8 +6,8 @@ import { AuthService } from 'projects/login-get-create-pet-app/src/app/core/serv
 import { Component, OnInit } from '@angular/core';
 import { AuthComponentsTag } from '../../../core/enums/component-tags';
 import { Observable } from 'rxjs';
-import { AuthForm } from '../../../core/interfaces/auth/auth-form.interface';
 import { ToastService } from '../../../core/services/toast-service/toast.service';
+import { FormFormat } from '../../../core/interfaces/auth/form.interface';
 
 @Component({
   selector: 'eszsw-login',
@@ -16,7 +16,7 @@ import { ToastService } from '../../../core/services/toast-service/toast.service
 })
 export class LoginComponent implements OnInit {
 
-  public loginForm: AuthForm | Observable<AuthForm>;
+  public loginForm: FormFormat | Observable<FormFormat>;
   public textLink: string;
   public linkLbl: string;
   public linkPath: string;

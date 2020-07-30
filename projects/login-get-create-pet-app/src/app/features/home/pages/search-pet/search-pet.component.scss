@@ -1,0 +1,101 @@
+@import 'util/variables.scss';
+
+.wrapperContent {
+    padding:30px 0px;
+    text-align: center;
+    margin-bottom: 15px;
+}
+.wrapperContent__contentPet{
+    margin-bottom: 20px;
+    text-align: left;
+}
+.wrapperContent__contentPet__name {
+    font-size: 1.7rem;
+    text-align: center;
+    margin-bottom: 19px;
+}
+.wrapperContent__contentPet__keyTxt {
+    font-weight: bold;
+}
+.wrapperContent__contentPet__keyTxt__value {
+    color: $esz-gray;
+    font-weight: normal;
+    font-style: italic;
+    margin-left: 5px;
+}
+.wrapperContent__contentPet__photo {
+    font-weight: bold;
+    border-bottom:1px solid $esz-gray;
+    margin-bottom: 20px;
+}
+
+.wrapperContent__contentPet__contentImgs{
+    margin-bottom: 20px;
+    text-align: center;
+    padding: 0;
+}
+.wrapperContent__contentPet__contentImgs__element {
+    display: block;
+    margin:0 0 20px 0;
+}
+.wrapperContent__contentPet__contentImgs__img{
+    border-radius: 100%;
+    width: 290px;
+    height: 290px;
+    margin:0;
+}
+.wrapperContent__infoSearch {
+    font-size: 2rem;
+    color: $esz-gray;
+}
+
+
+// Tablet resolution
+@media(min-width:$esz-min-tablet-resolution) {
+    .wrapperContent {
+        padding:0;
+        min-height: 220px;
+        margin-bottom: 10px;
+    }
+    .wrapperContent__contentPet__name {
+        text-align: left;
+        margin-bottom: 0;
+    }
+    .wrapperContent__contentPet__keyTxt {
+        margin-bottom: 3px;
+    }
+    .wrapperContent__contentPet__contentImgs{
+        text-align: left;
+    }
+    .wrapperContent__contentPet__contentImgs__element {
+        display: inline-block;
+        margin-right: 5px;
+        margin-left: 5px;
+        margin:0 7px 30px 7px;   
+        margin-bottom: 20px;
+    }
+    .wrapperContent__contentPet__contentImgs__img{
+        width: 100px;
+        height: 100px;
+    }
+    .wrapperContent__infoSearch {
+        font-size: 1.5rem;
+        padding-top: 20px;
+    }
+}
+// Desktop resolution
+@media(min-width:$esz-min-desktop-resolution) {
+    .wrapperContent__contentPet__name {
+        margin-bottom: 10px;
+    }
+    .wrapperContent__contentPet__contentImgs__element {
+        margin:0 15px 30px 15px;   
+    }
+    .wrapperContent {
+        min-height: 250px;
+    }
+    .wrapperContent__infoSearch {
+        font-size: 2.5rem;
+        color: $esz-gray;
+    }
+}

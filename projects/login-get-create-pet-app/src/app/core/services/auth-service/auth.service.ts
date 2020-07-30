@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 import { AuthEndPoints, ApiMethod } from '../../enums/endpoints';
 import { map } from 'rxjs/operators';
 import { AccountService } from '../account-service/account.service';
-import { AuthForm } from '../../interfaces/auth/auth-form.interface';
+import { FormFormat } from '../../interfaces/auth/form.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -54,17 +54,17 @@ export class AuthService {
     this._usserLogged = status;
   }
 
-  public getLoginForm(): Observable<AuthForm>  {
-    return this.httpService.requestCall(ApiMethod.GET, environment.apiAuthUrl, AuthEndPoints.LOGIN_FORM) as Observable<AuthForm>;
+  public getLoginForm(): Observable<FormFormat>  {
+    return this.httpService.requestCall(ApiMethod.GET, environment.apiAuthUrl, AuthEndPoints.LOGIN_FORM) as Observable<FormFormat>;
   }
-  public getSignUpForm(): Observable<AuthForm> {
-    return this.httpService.requestCall(ApiMethod.GET, environment.apiAuthUrl, AuthEndPoints.SIGN_UP_FORM) as Observable<AuthForm>;
+  public getSignUpForm(): Observable<FormFormat> {
+    return this.httpService.requestCall(ApiMethod.GET, environment.apiAuthUrl, AuthEndPoints.SIGN_UP_FORM) as Observable<FormFormat>;
   }
-  public getResetPasswordForm(): Observable<AuthForm> {
-    return this.httpService.requestCall(ApiMethod.GET, environment.apiAuthUrl, AuthEndPoints.RESET_PASSWORD_FORM) as Observable<AuthForm>;
+  public getResetPasswordForm(): Observable<FormFormat> {
+    return this.httpService.requestCall(ApiMethod.GET, environment.apiAuthUrl, AuthEndPoints.RESET_PASSWORD_FORM) as Observable<FormFormat>;
   }
-  public getMailConfirmForm(): Observable<AuthForm> {
-    return this.httpService.requestCall(ApiMethod.GET, environment.apiAuthUrl, AuthEndPoints.MAIL_CONFIRMATION_FORM) as Observable<AuthForm>;
+  public getMailConfirmForm(): Observable<FormFormat> {
+    return this.httpService.requestCall(ApiMethod.GET, environment.apiAuthUrl, AuthEndPoints.MAIL_CONFIRMATION_FORM) as Observable<FormFormat>;
   }
 
 }

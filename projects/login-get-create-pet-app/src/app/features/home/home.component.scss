@@ -1,3 +1,5 @@
+@import 'util/variables.scss';
+
 .header {
     margin-bottom:30px;
 }
@@ -11,4 +13,23 @@
     margin-bottom: 30px;
     border-bottom: 2px solid black;
     padding-bottom: 3px;
+}
+.contentForm {
+    margin-bottom: 15px;
+    margin: 0 auto;
+}
+
+
+// Tablet resolution
+@media(min-width:$esz-min-tablet-resolution) {
+    .contentForm {
+        width: 76%;
+    }
+}
+// Desktop resolution
+@media(min-width:$esz-min-desktop-resolution) {
+    .contentForm {
+        width: 500px;
+        margin-bottom:35px;
+    }
 }

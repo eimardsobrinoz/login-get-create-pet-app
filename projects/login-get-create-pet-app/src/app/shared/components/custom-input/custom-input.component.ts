@@ -5,8 +5,8 @@ import {
 } from '@angular/forms';
 import { AuthService } from 'projects/login-get-create-pet-app/src/app/core/services/auth-service/auth.service';
 import { Subscription } from 'rxjs';
-import { AuthValidation, AuthFormStatus } from 'projects/login-get-create-pet-app/src/app/core/interfaces/auth/auth-validation.inteface';
 import { ErrorFormMessage } from 'projects/login-get-create-pet-app/src/app/core/interfaces/errors/error-form-message.interface';
+import { FormValidation, FormFormatStatus } from '../../../core/interfaces/auth/form-validation.inteface';
 
 @Component({
   selector: 'eszsw-custom-input',
@@ -16,8 +16,9 @@ import { ErrorFormMessage } from 'projects/login-get-create-pet-app/src/app/core
 export class CustomInputComponent implements ControlValueAccessor, Validator, OnInit, OnDestroy {
 
   @ViewChild('input') input: ElementRef;
+  @Input() inputId: string = '';
   @Input() type: string = 'text';
-  @Input() controlValidation: AuthValidation;
+  @Input() controlValidation: FormValidation;
   @Input() pattern: string = '';
   @Input() label: string = '';
   @Input() placeholder: string = '';
@@ -159,10 +160,14 @@ export class CustomInputComponent implements ControlValueAccessor, Validator, On
 
   get statusPending(): boolean {
     let pending: boolean = false;
-    if (!this.control?.errors?.required && this.control?.dirty && this.control?.status == AuthFormStatus.PENDING) {
+    if (!this.control?.errors?.required && this.control?.dirty && this.control?.status == FormFormatStatus.PENDING) {
       pending = true;
     }
     return pending;
+  }
+
+  get hasIcon(): boolean {
+    return this.type === 'email' || this.type === 'password';
   }
 
   ngOnDestroy(): void {

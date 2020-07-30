@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'projects/login-get-create-pet-app/src/app/core/services/auth-service/auth.service';
 import { RoutePath } from 'projects/login-get-create-pet-app/src/app/core/enums/route.paths';
 import { AuthComponentsTag } from 'projects/login-get-create-pet-app/src/app/core/enums/component-tags';
-import { AuthForm } from 'projects/login-get-create-pet-app/src/app/core/interfaces/auth/auth-form.interface';
+import { FormFormat } from 'projects/login-get-create-pet-app/src/app/core/interfaces/auth/form.interface';
 
 @Component({
   selector: 'eszsw-reset-password',
@@ -12,7 +12,7 @@ import { AuthForm } from 'projects/login-get-create-pet-app/src/app/core/interfa
 })
 export class ResetPasswordComponent implements OnInit {
 
-  public resetPasswordForm: AuthForm | Observable<AuthForm>;
+  public resetPasswordForm: FormFormat | Observable<FormFormat>;
   public textLink:string;
   public linkLbl:string;
   public linkPath:string;

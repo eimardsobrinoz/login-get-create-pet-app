@@ -40,6 +40,9 @@
     background: $esz-white-light;
     margin: 0 auto;
     margin-bottom: 10px;
+    &:hover {
+        background: $esz-gray-light;
+    }
 }
 
 // Tablet resolution

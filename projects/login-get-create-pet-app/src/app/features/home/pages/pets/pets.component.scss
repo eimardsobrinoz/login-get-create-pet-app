@@ -1,5 +1,19 @@
 @import 'util/variables.scss';
 
+.subtitle__form {
+    float: right;
+    margin-top: 9px;
+    margin-right: 8px;
+}
+.subtitle__link {
+    float: right;
+}
+mat-icon.subtitle__link__icon {
+    font-size: 37px;
+    color: $esz-black;
+    width: 40px;
+    height: 40px;
+}
 .contentTabs {
     text-align: center;
     margin-left:5px;
@@ -27,7 +41,8 @@
     list-style: none;
     text-align: center;
     max-height: 600px;
-    overflow-y: scroll;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 .petList__element{
     display: inline-block;
@@ -39,6 +54,7 @@
     -webkit-box-shadow: 59px 59px 300px -108px rgba(0,0,0,0.13);
     -moz-box-shadow: 59px 59px 300px -108px rgba(0,0,0,0.13);
     box-shadow: 59px 59px 300px -108px rgba(0,0,0,0.13);
+    border-bottom: 1px solid $esz-gray-light;
 }
 .petList__element__title {
     font-size: 1.2rem;
@@ -64,6 +80,7 @@
         width: 40%;
         margin-left: 15px;
         margin-right: 15px;
+        border:none;
     }
     .petList__element__img{
         width: 100px;

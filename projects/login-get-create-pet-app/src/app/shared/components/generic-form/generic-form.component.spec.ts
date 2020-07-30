@@ -1,23 +1,23 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AuthFormComponent } from './auth-form.component';
-import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
+import { GenericFormComponent } from './generic-form.component';
+import { FormControl, Validators, AbstractControl } from '@angular/forms';
 
 
 // ISOLATED TESTS
-describe('AuthFormComponent', () => {
-  let component: AuthFormComponent;
-  let fixture: ComponentFixture<AuthFormComponent>;
+describe('GenericFormComponent', () => {
+  let component: GenericFormComponent;
+  let fixture: ComponentFixture<GenericFormComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [AuthFormComponent]
+      declarations: [GenericFormComponent]
     })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AuthFormComponent);
+    fixture = TestBed.createComponent(GenericFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
     buildEmptyFormGroup();

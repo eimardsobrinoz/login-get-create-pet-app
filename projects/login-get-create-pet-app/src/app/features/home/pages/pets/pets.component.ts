@@ -1,3 +1,4 @@
+import { RoutePath } from './../../../../core/enums/route.paths';
 import { PetService } from './../../../../core/services/pet-service/pet.service';
 import { Pet } from './../../../../core/interfaces/pets/pet-interface';
 import { Component, OnInit } from '@angular/core';
@@ -12,7 +13,9 @@ export class PetsComponent implements OnInit {
 
   public pets: Pet[];
   public petStatus: string;
-  public petImgPath: string;
+  public noImgPath: string;
+  public searchPetByIDPath: string;
+  public createPEtPath: string;
 
   constructor(private petService: PetService) { }
 
@@ -24,10 +27,12 @@ export class PetsComponent implements OnInit {
   initialize() {
     this.pets = [];
     this.petStatus = PetStatus.AVAILABLE;
-    this.petImgPath = 'assets/img/noImage.jpg';
+    this.noImgPath = 'assets/img/noImage.jpg';
+    this.createPEtPath = RoutePath.SEARCH_PET;
+    this.searchPetByIDPath = RoutePath.CREATE_PET;
   }
 
-  getPets(status: string): void {
+  public getPets(status: string): void {
     this.petStatus = status;
     this.petService.getPets(status).subscribe( 
       (pets: Pet[]) => this.pets = pets,

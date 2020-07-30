@@ -1,0 +1,69 @@
+
+<form *ngIf="formFormat else loading" class="form" [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+    <fieldset class="form__fieldset">
+        <legend class="sr-only">Login Form</legend>
+
+        <!-- INPUT CONTROLS -->
+        <ng-container *ngFor="let inputControl of formFormat.inputsControls">
+            <eszsw-custom-input 
+            class ="customControl" 
+            [inputId]="inputControl.inputId" 
+            [formControlName]="inputControl.name"
+            [errorMsg]="inputControl.errorMsg"
+            [label]="inputControl.label" 
+            [type]="inputControl?.type"
+            [pattern]=inputControl?.pattern
+            [controlValidation] = "inputControl.validations">
+            </eszsw-custom-input>
+        </ng-container>
+
+
+        <!-- SELECTS CONTROLS -->
+        <div *ngFor="let selectControl of formFormat.selectControls" class="form__contentSelects">
+            <label [for]="selectControl.id" class="formControlGroup__label"> {{selectControl.label}}</label>
+            <select class="form__contentSelects__select" 
+            [name]="selectControl.name" 
+            [id]="selectControl.id"
+            [formControlName]="selectControl.name"
+            [value]="selectControl.options[0]">
+                <option *ngFor="let option of selectControl.options" [value]="option">
+                    {{option}}
+                </option>
+            </select>
+        </div>
+
+        <!-- UPLOAD IMG -->
+        <ng-container *ngIf="formFormat.upload">
+            <input class="form__upload" id="imageFile" type="file" formControlName="imageFile" 
+            name="imageFile" accept="image/png, image/jpeg">
+            <label class="sr-only" for="imageFile">Upload image</label>
+
+            <p class="contentLine">
+                <span class="line"></span> <span class="linetxt"> or </span> <span class="line"></span>
+            </p>
+
+            <eszsw-custom-input 
+            class ="customControl"  
+            formControlName="imageUrl"
+            label="Enter imagen url*" 
+            type="text"
+            inputId="imageUrl"
+            controlValidation = "{required:true}"
+            [errorMsg]="{required: 'Enter img link'}">
+            </eszsw-custom-input>         
+        </ng-container>
+
+        <!-- BUTTON -->
+        <button type="submit" 
+        class="form__btn formBtn"  
+        [ngClass]="{'disabled' : !validForm}"
+        [disabled]="!validForm">
+        {{formFormat.btnLabel}}
+        </button>        
+    </fieldset>
+</form>
+
+<ng-template #loading>
+    <eszsw-loading></eszsw-loading>
+</ng-template>
+
