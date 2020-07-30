@@ -2,9 +2,10 @@ import { ToastService } from './../../../../core/services/toast-service/toast.se
 import { PetService } from './../../../../core/services/pet-service/pet.service';
 import { Pet } from './../../../../core/interfaces/pets/pet-interface';
 import { FormGroup } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { RoutePath } from 'projects/login-get-create-pet-app/src/app/core/enums/route.paths';
 import { FormFormat } from 'projects/login-get-create-pet-app/src/app/core/interfaces/auth/form.interface';
+import { GenericFormComponent } from 'projects/login-get-create-pet-app/src/app/shared/components/generic-form/generic-form.component';
 
 @Component({
   selector: 'eszsw-create-pet',
@@ -16,6 +17,8 @@ export class CreatePetComponent implements OnInit {
   public backLinkLbl:string; 
   public backLinkPath:string;
   public createPetForm: FormFormat;
+
+  @ViewChild('formComponent') formComponent:GenericFormComponent;
   
   constructor(private petService: PetService, private toastService:ToastService) { }
 
@@ -87,14 +90,13 @@ export class CreatePetComponent implements OnInit {
       "photoUrls": photoUrls,
       "status":  form.get('statusselection')?.value
     }
-
-    // this.petService.createPet(pet).subscribe( 
-    //   pet => {
-    //     this.toastService.showSuccess('Successfully pet created', 3); 
-    //     form.reset({});
-    //   },
-    //   error =>  this.toastService.showError('Pet not created', 3, 'Error!')
-    // );
+    this.petService.createPet(pet).subscribe( 
+      pet => {
+        this.toastService.showSuccess('Successfully pet created', 3); 
+        form.reset({});
+      },
+      error =>  this.toastService.showError('Pet not created', 3, 'Error!')
+    );
   }
 
 }

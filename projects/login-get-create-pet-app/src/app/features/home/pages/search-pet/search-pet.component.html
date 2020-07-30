@@ -25,7 +25,7 @@
         </p>
         <ul class="wrapperContent__contentPet__contentImgs">
             <li class="wrapperContent__contentPet__contentImgs__element" *ngFor="let img of pet.photoUrls">
-                <img class="wrapperContent__contentPet__contentImgs__img" [src]="img? img : noImgPath">
+                <img class="wrapperContent__contentPet__contentImgs__img" [src]="img" noImgAvailable>
             </li>
         </ul>
     </div>

@@ -3,6 +3,7 @@ import { CreatePetComponent } from './pages/create-pet/create-pet.component';
 import { SearchPetComponent } from './pages/search-pet/search-pet.component';
 import { RoutePath } from './../../core/enums/route.paths';
 import { RouterModule, Routes } from '@angular/router';
+import { CompleteFormGuard } from '../../core/guards/completeForm/complete-form.guard';
 
 
 const homeRoutes: Routes = [
@@ -16,7 +17,8 @@ const homeRoutes: Routes = [
     },
     {
       path: RoutePath.CREATE_PET,
-      component: CreatePetComponent
+      component: CreatePetComponent,
+      canDeactivate:[CompleteFormGuard]
     } ,
     {
       path: RoutePath.SEARCH_PET,

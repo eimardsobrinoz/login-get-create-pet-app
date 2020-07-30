@@ -2,7 +2,7 @@ import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'projects/login-get-create-pet-app/src/app/core/services/auth-service/auth.service';
 import { RoutePath } from 'projects/login-get-create-pet-app/src/app/core/enums/route.paths';
-import { AuthComponentsTag } from 'projects/login-get-create-pet-app/src/app/core/enums/component-tags';
+import { ComponentsTag } from 'projects/login-get-create-pet-app/src/app/core/enums/component-tags';
 import { FormFormat } from 'projects/login-get-create-pet-app/src/app/core/interfaces/auth/form.interface';
 
 @Component({
@@ -35,7 +35,7 @@ export class ResetPasswordComponent implements OnInit {
   }
 
   get getComponentTag() {
-    return AuthComponentsTag.RESET_PASSWORD;
+    return ComponentsTag.RESET_PASSWORD;
   }
 
 }

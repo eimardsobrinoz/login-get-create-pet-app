@@ -9,6 +9,8 @@ import { LoadingComponent } from './components/loading/loading.component';
 import { GenericFormComponent } from './components/generic-form/generic-form.component';
 import { TextLinkComponent } from './components/text-link/text-link.component';
 import { CustomInputComponent } from './components/custom-input/custom-input.component';
+import { NoImgDirective } from './directives/no-img/no-img.directive';
+import { HeaderComponent } from '../features/home/layout/header/header.component';
 
 
 @NgModule({
@@ -17,7 +19,9 @@ import { CustomInputComponent } from './components/custom-input/custom-input.com
     ToastComponent,
     TextLinkComponent,
     GenericFormComponent,
-    CustomInputComponent
+    CustomInputComponent,
+    NoImgDirective,
+    HeaderComponent
   ],
   imports: [
     //vendor
@@ -45,7 +49,9 @@ import { CustomInputComponent } from './components/custom-input/custom-input.com
     ToastComponent,
     TextLinkComponent,
     GenericFormComponent,
-    CustomInputComponent
+    CustomInputComponent,
+    NoImgDirective,
+    HeaderComponent
   ]
 })
 export class SharedModule { }

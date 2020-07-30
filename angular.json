@@ -25,7 +25,8 @@
             "aot": true,
             "assets": [
               "projects/login-get-create-pet-app/src/favicon.ico",
-              "projects/login-get-create-pet-app/src/assets"
+              "projects/login-get-create-pet-app/src/assets",
+              "projects/login-get-create-pet-app/src/assets/img"
             ],
             "styles": [
               "projects/login-get-create-pet-app/src/assets/styles.scss"

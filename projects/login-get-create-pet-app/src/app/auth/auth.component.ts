@@ -1,6 +1,6 @@
-import { AuthComponentsTag } from '../core/enums/component-tags';
+import { ComponentsTag } from '../core/enums/component-tags';
 import { SignupComponent } from './pages/signup/signup.component';
-import { Component, OnInit, ViewChild, ViewEncapsulation, OnDestroy } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewEncapsulation, OnDestroy, Renderer2, Inject } from '@angular/core';
 import { RouterOutlet, Router, ActivationEnd } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
 import { filter, map, first } from 'rxjs/operators';
@@ -10,6 +10,7 @@ import { ResetPasswordComponent } from './pages/reset-password/reset-password/re
 import { MailConfirmComponent } from './pages/mail-confirm/mail-confirm/mail-confirm.component';
 import { Subscription } from 'rxjs';
 import { ToastService } from '../core/services/toast-service/toast.service';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'eszsw-auth',
@@ -30,11 +31,13 @@ export class AuthComponent implements OnInit, OnDestroy{
 
   public context: string;
 
-  constructor(private router: Router, public toastService: ToastService) {}
+  constructor(private router: Router, public toastService: ToastService, private renderer: Renderer2,
+             @Inject(DOCUMENT) private document: Document) {}
 
   ngOnInit(): void {
     this.initialize();
     this.getComponentTag();
+    this.addAuthClass();
   }
 
   public getComponentTag(): void {
@@ -59,6 +62,12 @@ export class AuthComponent implements OnInit, OnDestroy{
     this.signupLinkPath= '';
   }
 
+  public addAuthClass ():void{
+    if(this.document.getElementById('body')) {
+      this.renderer.addClass(this.document.getElementById('body'), 'auth');
+    }
+  }
+
   // Just to show two ways of obtaining the data
   public getCurrentContext(): void {
     if (this.ro && this.ro.component) {
@@ -68,7 +77,7 @@ export class AuthComponent implements OnInit, OnDestroy{
 
   get inSignup(): boolean {
     let inSignup: boolean = false;
-    if (this.context === AuthComponentsTag.SING_UP) {
+    if (this.context === ComponentsTag.SING_UP) {
       inSignup = true;
     }
     return inSignup;

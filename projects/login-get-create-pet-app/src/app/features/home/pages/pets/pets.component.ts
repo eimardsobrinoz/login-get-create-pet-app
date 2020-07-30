@@ -36,7 +36,7 @@ export class PetsComponent implements OnInit {
     this.petStatus = status;
     this.petService.getPets(status).subscribe( 
       (pets: Pet[]) => this.pets = pets,
-      error => console.log('Pet emilio error: ', error)
+      error => console.log(error)
     );
   }
 

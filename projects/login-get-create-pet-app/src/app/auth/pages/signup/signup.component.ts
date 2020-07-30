@@ -1,7 +1,7 @@
 import { User } from '../../../core/interfaces/user/user-interface';
 import { AuthService } from 'projects/login-get-create-pet-app/src/app/core/services/auth-service/auth.service';
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
-import { AuthComponentsTag } from '../../../core/enums/component-tags';
+import { ComponentsTag } from '../../../core/enums/component-tags';
 import { FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs/internal/Observable';
 import { Router } from '@angular/router';
@@ -61,7 +61,7 @@ export class SignupComponent implements OnInit, OnDestroy {
   }
   
   get getComponentTag(){
-    return AuthComponentsTag.SING_UP;
+    return ComponentsTag.SING_UP;
   }
 
   ngOnDestroy(): void {

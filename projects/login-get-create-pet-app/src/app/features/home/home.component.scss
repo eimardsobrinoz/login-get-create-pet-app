@@ -1,5 +1,8 @@
 @import 'util/variables.scss';
 
+body {
+    background: $esz-white;
+}
 .header {
     margin-bottom:30px;
 }
@@ -25,6 +28,13 @@
     .contentForm {
         width: 76%;
     }
+    .contentBackLink {
+        .contentBackLink__icon {
+            font-size: 60px;
+            margin-top: 0px;
+        }   
+    }
+    
 }
 // Desktop resolution
 @media(min-width:$esz-min-desktop-resolution) {

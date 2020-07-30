@@ -1,40 +1,64 @@
 @import 'util/variables.scss';
 
 .header {
-    background: $esz-black;
-    width: 100%;
-    padding:15px 10px;
+    background: $esz-white;
     position: relative;
+    width: 100%;
+    text-align: right;
+    padding-left: 0;
+    display: table;;
 }
-.header__title {
-    letter-spacing: 3px;
-    font-size: 1rem;
+.header__nav {
+    text-align: left;
+    vertical-align: middle;
+    display: table-cell;
+    padding: 0;
+}
+.header__nav__list{
+    padding: 0;
     margin: 0;
+    list-style: none;
+    vertical-align: middle;
+}
+.header__nav__list__element{
+    margin:0 30px 0 0;
+    padding: 0;
     display: inline-block;
-    max-width: 66%;
-    overflow: hidden;
-    color:$esz-white;
+}
+.header__link {
+    color: $esz-black;
+    font-weight: bold;
+    padding: 4px 15px;
+    &:hover {
+        background: $esz-gray-light;
+        text-decoration: none;
+    }
+    &.active, &:active {
+        background: none;
+        border-bottom:1px solid $esz-black;
+    }
 }
 .header__btn {
+    display: table-cell;
     vertical-align: middle;
-    border: 2px solid $esz-white;
-    color: $esz-white;
+    border: 2px solid $esz-black;
+    color: $esz-black;
     padding: 4px 15px;
     display: inline-block;
     font-size: 1rem;
     background: transparent;
     border-radius: 4px;
     font-weight: bold;
-    position: absolute;
-    top: 9px;
-    right: 10px;
+    &:hover {
+        background: $esz-gray-light;
+    }
 }
 
 
 // Resolution large resolution
 @media(min-width: $esz-min-desktop-resolution) {
     .header {
-        padding:15px 15px;
+        padding:15px 15px 15px 0;
         .header__title {
             letter-spacing: 4px;
             font-size: 1.5rem;

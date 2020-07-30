@@ -1,7 +1,11 @@
 <h1 class="subtitle"> CREATE A PET </h1>
 
 <div class="contentForm">
-    <eszsw-generic-form class="formLayout" [formFormat$]="createPetForm" (onSubmitForm)="createPet($event)"></eszsw-generic-form>
+    <eszsw-generic-form  #formComponent
+    class="formLayout" 
+    [formFormat$]="createPetForm" 
+    (onSubmitForm)="createPet($event)">
+    </eszsw-generic-form>
 </div>
 
 <eszsw-text-link [text]="backTextLink" [linkLbl]="backLinkLbl" [linkPath]="backLinkPath"></eszsw-text-link>

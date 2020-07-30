@@ -1,6 +1,6 @@
 <toast-notification></toast-notification>
 
-<eszsw-text-link *ngIf="inSignup else loginLink"  
+<eszsw-text-link class="contentLink" *ngIf="inSignup else loginLink"  
     [text]="textSignupLink" 
     [linkLbl]="signupLinkLbl" 
     [linkPath]="signupLinkPath"
@@ -8,6 +8,7 @@
 
 <ng-template #loginLink>
     <eszsw-text-link 
+    class="contentLink"
     [text]="textLoginLink" 
     [linkLbl]="loginLinkLbl" 
     [linkPath]="loginLinkPath"

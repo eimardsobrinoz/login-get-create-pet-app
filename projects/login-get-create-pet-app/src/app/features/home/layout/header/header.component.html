@@ -1,5 +1,14 @@
 <header class="header">
     <h1 class="sr-only">Header</h1>
-    <h2 class="header__title">Welcome {{user?.firstName}} {{user?.lastName}}</h2>
+    <nav class="header__nav">
+        <ul class="header__nav__list">
+            <li class="header__nav__list__element">
+                <a class="header__link" routerLinkActive="active" [routerLink]="homePath">Home</a>
+            </li>
+            <li class="header__nav__list__element">
+                <a class="header__link" routerLinkActive="active" [routerLink]="adminPath">Admin</a>
+            </li>
+        </ul>
+    </nav>
     <button class="header__btn" (click)="logout()">Logout</button>
 </header>

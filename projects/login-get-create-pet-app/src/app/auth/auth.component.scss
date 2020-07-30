@@ -1,5 +1,10 @@
 @import 'util/variables.scss';
 
+.contentLink {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 50px;
+}
 h1.formTitle {
     font-size: 3rem;
     font-weight: bold;
@@ -35,7 +40,15 @@ h1.formTitle {
 }
 // Desktop resolution
 @media(min-width:$esz-min-desktop-resolution) {
-
+    body.auth {
+        background: $esz-bkgAuth;
+        .mainWrapper {
+            display: block;
+            background-image: url('./../../assets/img/bkg-auth.jpg');
+            background-size: cover;
+            background-position-x: 580px;
+        }
+    } 
     .formLayout {
         width: 70%;
     }

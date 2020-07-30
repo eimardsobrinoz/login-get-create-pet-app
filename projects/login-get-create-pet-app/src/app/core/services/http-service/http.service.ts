@@ -21,16 +21,6 @@ export class HttpService {
     this.headers = new HttpHeaders().set(key, value);
   }
 
-  public setParams (params: HttpParams[]): void {
-    params.forEach( param => console.log('param: ', param));
-    // this.params = new HttpHeaders().set(key, value);
-
-    // let params = new HttpParams();
-    // params = params.append('_page', 1);
-    // params = params.append('_limit', 10);
-  }
-
-
 
   /**
   * This function is used to handle how to make api calls providing the method, the api and data is needed (put/post).

@@ -1,8 +1,5 @@
 @import 'util/variables.scss';
-.mainWrapper {
-    display: block;
-    // border: 2px solid red;
-}
+
 .contentAsideLeft, .contentMain, .contentMain__main, .contentAsideLeft_asideLeft{
     width: auto;
     display: block;
@@ -45,11 +42,11 @@
         .contentMain {
             width:70%;
         }
-        .contentMain__main{
-            padding-top: 0;
-        }
         .contentAsideLeft_asideLeft {
             padding: 0;
+        }
+        .contentMain__main {
+            padding-top: 0px;
         }
     }
 }

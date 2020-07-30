@@ -57,7 +57,6 @@ export class SearchPetComponent implements OnInit {
       error => {
         this.pet = null;
         this.infoSearch = 'No Pet found with that ID'
-        console.log('Pet emilio error: ', error)
       }
     );
   }

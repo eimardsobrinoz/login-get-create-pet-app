@@ -30,7 +30,7 @@
  
 <ul class="petList">
     <li class="petList__element" *ngFor="let pet of pets">
-        <img class="petList__element__img" [src]="pet.photoUrls[0]? pet.photoUrls[0] : noImgPath">
+        <img class="petList__element__img" [src]="pet.photoUrls[0]" noImgAvailable>
         <h4 class="petList__element__title">{{pet.name? pet.name : '-no name-'}}</h4>
     </li>
 </ul>

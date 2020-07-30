@@ -1,7 +1,7 @@
 import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'projects/login-get-create-pet-app/src/app/core/services/auth-service/auth.service';
-import { AuthComponentsTag } from 'projects/login-get-create-pet-app/src/app/core/enums/component-tags';
+import { ComponentsTag } from 'projects/login-get-create-pet-app/src/app/core/enums/component-tags';
 import { FormFormat } from 'projects/login-get-create-pet-app/src/app/core/interfaces/auth/form.interface';
 
 @Component({
@@ -35,7 +35,7 @@ export class MailConfirmComponent implements OnInit {
   }
 
   get getComponentTag() {
-    return AuthComponentsTag.MAIL_CONFIRMATION;
+    return ComponentsTag.MAIL_CONFIRMATION;
   }
 
 }

@@ -58,7 +58,7 @@ export class GenericFormComponent implements OnInit  {
     (this.formFormat as FormFormat)?.selectControls?.forEach( control => {
       this.formGroup.addControl(control.name, new FormControl(control.options[0],[Validators.required]));
     });
-    if (this.formFormat.upload) {
+    if (this.formFormat?.upload) {
       this.formGroup.addControl('imageFile', new FormControl('',[]));
       this.formGroup.addControl('imageUrl', new FormControl('',[Validators.required]));
     }
