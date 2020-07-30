@@ -1,4 +1,4 @@
-# SIGN UP PROJECT
+# PET STORE APP
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.0.
 
@@ -93,6 +93,40 @@ Open other terminal in the root directory of the project and run the below comma
 ```
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
+## Running Docker
+
+Open a docker terminal in order to run the virtual machine and pull the docker image and execute them with the below command lines:
+
+Expose port 8080 from the image and access petstore via the exposed port. You can then add and delete pets as you see fit.
+
+You can configure the mount point for the application (default is api):
+
+```
+SWAGGER_BASE_PATH=/v2
+```
+
+You can also configure the host that you will be serving the API on:
+
+```
+SWAGGER_HOST=http://petstore.swagger.io
+```
+Lastly, you can configure the URL you will accessing this API on. Please be aware that SWAGGER_URL replaces the value in SWAGGER_HOST but both should be used as they serve different purposes.
+
+
+```
+SWAGGER_URL=http://localhost
+```
+
+EXAMPLE
+
+```
+docker pull swaggerapi/petstore
+docker run -d -e SWAGGER_HOST=http://petstore.swagger.io \
+  -e SWAGGER_URL=http://localhost \
+  -e SWAGGER_BASE_PATH=/v2 -p 80:8080 swaggerapi/petstore
+```
+You can now open swagger-ui on your machine via 80
 
 ## Running the tests
 
