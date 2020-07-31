@@ -21,7 +21,7 @@ export class HeaderComponent implements OnInit {
   }
 
   public initialize(): void {
-    this.homePath = RoutePath.PETS;
+    this.homePath = RoutePath.HOME;
     this.adminPath = '/'+RoutePath.ADMIN;
   }
 

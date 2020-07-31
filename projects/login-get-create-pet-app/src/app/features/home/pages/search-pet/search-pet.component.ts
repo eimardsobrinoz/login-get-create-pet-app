@@ -1,8 +1,9 @@
+import { Subscription } from 'rxjs';
 import { FormGroup } from '@angular/forms';
 import { Pet } from './../../../../core/interfaces/pets/pet-interface';
 import { PetService } from './../../../../core/services/pet-service/pet.service';
 import { RoutePath } from './../../../../core/enums/route.paths';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormFormat } from 'projects/login-get-create-pet-app/src/app/core/interfaces/auth/form.interface';
 
 @Component({
@@ -10,7 +11,7 @@ import { FormFormat } from 'projects/login-get-create-pet-app/src/app/core/inter
   templateUrl: './search-pet.component.html',
   styleUrls: ['./search-pet.component.scss']
 })
-export class SearchPetComponent implements OnInit {
+export class SearchPetComponent implements OnInit, OnDestroy {
   public backTextLink: string;
   public backLinkLbl: string;
   public backLinkPath: string;
@@ -18,6 +19,7 @@ export class SearchPetComponent implements OnInit {
   public infoSearch: string;
   public searchPetForm: FormFormat;
   public pet: Pet | null;
+  public subscriptions: Subscription[];
 
   constructor(private petService: PetService) { }
 
@@ -30,7 +32,8 @@ export class SearchPetComponent implements OnInit {
     this.backLinkLbl = 'Pets';
     this.noImgPath = "'assets/img/noImage.jpg'";
     this.infoSearch = 'Find your specific pet';
-    this.backLinkPath = RoutePath.PETS;
+    this.backLinkPath = RoutePath.HOME;
+    this.subscriptions = [];
     this.searchPetForm = {
       "inputsControls": [
         {
@@ -52,13 +55,17 @@ export class SearchPetComponent implements OnInit {
 
   public getPet(form: FormGroup): void {
     const id: string = form.get('searchId')?.value;
-    this.petService.getPet(id).subscribe(
+    this.subscriptions.push(this.petService.getPet(id).subscribe(
       (pet: Pet) => this.pet = pet,
       error => {
         this.pet = null;
         this.infoSearch = 'No Pet found with that ID'
       }
-    );
+    ));
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach(subscription => subscription.unsubscribe());
   }
 
 }

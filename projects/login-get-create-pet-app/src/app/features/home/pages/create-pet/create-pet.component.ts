@@ -1,8 +1,9 @@
+import { Subscription } from 'rxjs';
 import { ToastService } from './../../../../core/services/toast-service/toast.service';
 import { PetService } from './../../../../core/services/pet-service/pet.service';
 import { Pet } from './../../../../core/interfaces/pets/pet-interface';
 import { FormGroup } from '@angular/forms';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { RoutePath } from 'projects/login-get-create-pet-app/src/app/core/enums/route.paths';
 import { FormFormat } from 'projects/login-get-create-pet-app/src/app/core/interfaces/auth/form.interface';
 import { GenericFormComponent } from 'projects/login-get-create-pet-app/src/app/shared/components/generic-form/generic-form.component';
@@ -12,11 +13,13 @@ import { GenericFormComponent } from 'projects/login-get-create-pet-app/src/app/
   templateUrl: './create-pet.component.html',
   styleUrls: ['./create-pet.component.scss']
 })
-export class CreatePetComponent implements OnInit {
+export class CreatePetComponent implements OnInit, OnDestroy{
   public backTextLink:string; 
   public backLinkLbl:string; 
   public backLinkPath:string;
   public createPetForm: FormFormat;
+
+  public subscriptions: Subscription[];
 
   @ViewChild('formComponent') formComponent:GenericFormComponent;
   
@@ -29,6 +32,7 @@ export class CreatePetComponent implements OnInit {
   public initialize(): void {
     this.backTextLink = "Better to go back?"; 
     this.backLinkLbl = 'Pets'; 
+    this.subscriptions = [];
     this.createPetForm = {
       "inputsControls": [
         {
@@ -71,7 +75,7 @@ export class CreatePetComponent implements OnInit {
       "upload": true,
       "btnLabel": "Create Pet"
     }
-    this.backLinkPath = RoutePath.PETS; 
+    this.backLinkPath = RoutePath.HOME; 
   }
 
   public createPet(form: FormGroup): void{
@@ -90,13 +94,17 @@ export class CreatePetComponent implements OnInit {
       "photoUrls": photoUrls,
       "status":  form.get('statusselection')?.value
     }
-    this.petService.createPet(pet).subscribe( 
+    this.subscriptions.push(this.petService.createPet(pet).subscribe( 
       pet => {
         this.toastService.showSuccess('Successfully pet created', 3); 
         form.reset({});
       },
       error =>  this.toastService.showError('Pet not created', 3, 'Error!')
-    );
+    ));
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach(subscription => subscription.unsubscribe());
   }
 
 }
